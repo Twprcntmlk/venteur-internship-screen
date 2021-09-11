@@ -28,24 +28,28 @@ export const fetchZip = (zip) => async (dispatch) => {
 }
 
 export const fetchQuote= (zipCountyId, age, gender, smoking) => async (dispatch) => {
-  const response = await fetch('/api/external/quote', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({zipCountyId, age, gender, smoking})
-  })
-  const data = await response.json();
-  dispatch(receiveQuote(data))
+  if(zipCountyId && age && gender && smoking){
+    const response = await fetch('/api/external/quote', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({zipCountyId, age, gender, smoking})
+    })
+    const data = await response.json();
+    dispatch(receiveQuote(data))
+  }
+
+
 };
 
-export const fetchEnroll = (zip, age, gender, smoking, policyId, benefitAmount) => async (dispatch) => {
+export const fetchEnroll = (zipCountyId, age, gender, smoker, policyId, benefitAmount) => async (dispatch) => {
     const response = await fetch('/api/external/enroll',{
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify({zip, age, gender, smoking, policyId, benefitAmount})
+    body: JSON.stringify({zipCountyId, age, gender, smoker, policyId, benefitAmount})
   })
   const data = await response.json();
   return data

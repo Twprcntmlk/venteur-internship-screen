@@ -14,20 +14,6 @@ const UserSchema = new Schema({
       type: String,
       required: true
     },
-    age: {
-      type: Number,
-      min: 1,
-      max: 130
-    },
-    gender: {
-      type: String, enum: ['M', 'F', 'O']
-    },
-    zip: {
-      type: String
-    },
-    smoking: {
-      type: Boolean
-    }
   }, {
     timestamps: true
   })

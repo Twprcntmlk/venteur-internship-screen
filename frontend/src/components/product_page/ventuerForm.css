@@ -1,0 +1,24 @@
+.ventuer-form-main{
+    display:grid;
+    grid-template-areas:
+    "form output extra extra  "
+    ;
+}
+.form {
+    max-width:100%;
+}
+.ventuer-form-container{
+    grid-area: form;
+    margin: 2%;
+
+}
+
+
+.ventuer-form-container-result{
+    grid-area: output;
+    margin: 2%;
+}
+
+.errors{
+    color:red
+}
