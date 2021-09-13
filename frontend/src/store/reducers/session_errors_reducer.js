@@ -1,8 +1,4 @@
-//src/reducers/session_errors_reducer.js
-import {
-  RECEIVE_SESSION_ERRORS,
-  RECEIVE_CURRENT_USER,
-} from '../../store/actions/session_actions';
+import { RECEIVE_SESSION_ERRORS, RECEIVE_CURRENT_USER} from '../../store/actions/session_actions';
 
 const _nullErrors = [];
 

@@ -16,28 +16,19 @@ router.get('/zip/:id', async (req, res) => {
   }
   });
 
-
-
-
 router.post('/quote', async (req, res) => {
   const { zipCountyId, age, gender, smoking} = req.body
   try{
-
     const data = {zipCountyId,age,gender,smoking}
-
     const result = await axios.post(`http://tech-screen.venteur.co/Policies/Quote`, data)
     //"nonsmoker""smoker"
     //"male""female"
     //"years10""years20""years30""wholelife"
-
     res.send(result.data)
   }catch (error) {
     console.error(error);
   }
 });
-
-
-
 
 router.post('/enroll', async (req, res) => {
   const { zipCountyId, age, gender, smoker, policyId, benefitAmount} = req.body
@@ -55,7 +46,6 @@ router.post('/enroll', async (req, res) => {
   "policyId":policyId,
   "benefitAmount":parseInt(benefitAmount)
   }
-
   try{
     const result = await axios.post('http://tech-screen.venteur.co/Policies/Enroll', data)
     res.send(result.data)
@@ -65,5 +55,4 @@ router.post('/enroll', async (req, res) => {
   }
 });
 
-
-  module.exports = router;
+module.exports = router;

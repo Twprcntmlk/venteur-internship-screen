@@ -3,7 +3,6 @@
 
 export const RECEIVE_ZIP = "RECEIVE_ZIP";
 export const RECEIVE_QUOTE = "RECEIVE_QUOTE";
-// export const RECEIVE_ENROLL = "RECEIVE_ENROLL";
 
 export const receiveZip = data => ({
   type: RECEIVE_ZIP,
@@ -14,11 +13,6 @@ export const receiveQuote = data => ({
   type: RECEIVE_QUOTE,
   data
 });
-
-// export const receiveEnroll = data=> ({
-//   type: RECEIVE_NEW_TWEET,
-//   data
-// })
 
 export const fetchZip = (zip) => async (dispatch) => {
   const response = await fetch(`/api/external/zip/${zip}`)

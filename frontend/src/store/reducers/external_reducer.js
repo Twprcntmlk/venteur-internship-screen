@@ -1,5 +1,3 @@
-// src/reducers/externals_reducer.js
-
 import { RECEIVE_ZIP, RECEIVE_QUOTE} from '../actions/external_actions';
 
   const ExternalReducer = (state = {zip:[], quote:[] }, action) => {
