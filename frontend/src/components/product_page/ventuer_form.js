@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import {fetchZip} from '../../store/actions/external_actions'
 import './ventuerForm.css';
 
-const VentuerForm = ({setAge,age,setGender,gender,setZip,zip,setSmoking,smoking,county, setCounty}) => {
+const VentuerForm = ({setAge,age,setGender,gender,setZip,zip,setSmoking,smoking,county, setCounty, policy, setPolicy}) => {
   const dispatch = useDispatch();
   const zipData = useSelector(state => state.external.zip);
 
   const [errors, setErrors] = useState("")
-  const [policy, setPolicy] = useState(zipData)
+
 
   const onHandleSubmit = async (e) => {
     setErrors([])
@@ -27,18 +27,19 @@ const VentuerForm = ({setAge,age,setGender,gender,setZip,zip,setSmoking,smoking,
   }
 
   useEffect(()=>{
-    if(county){
+
+    if (zipData.length > 1 && !county){
+      const counties = zipData.map((el)=>(el.county))
+      setErrors(`Please Enter One a County: ${counties}`)
+    }
+    else if(county){
       const filteredzipData = zipData.filter((el)=>(el.county === county))
       setPolicy(filteredzipData)
-      }
-    else if (county  & county.length > 1){
-        setPolicy(zipData)
-        const counties = zipData.map((el, idx)=>(el.county))
-        setErrors(`Please Enter One of the Counties ${counties}`)
-    }else{
+    }
+    else{
       setPolicy(zipData)
     }
-  },[onHandleSubmit])
+  },[zipData])
 
     return (
         <div className="ventuer-form-main">

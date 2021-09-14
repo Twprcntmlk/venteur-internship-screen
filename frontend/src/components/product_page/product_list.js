@@ -5,7 +5,7 @@ import {fetchQuote} from '../../store/actions/external_actions'
 
 import './productList.css';
 
-const ProductList = ({age,gender,smoking,county}) => {
+const ProductList = ({age,gender,smoking,county, policy}) => {
   const dispatch = useDispatch();
   const zipData = useSelector(state => state.external.zip);
   const quoteData = useSelector(state => state.external.quote);
@@ -19,14 +19,17 @@ const ProductList = ({age,gender,smoking,county}) => {
   },[quoteData, zipData])
 
   useEffect(()=>{
-    dispatch(fetchQuote(
+
+      dispatch(fetchQuote(
         zipData[0]?.id,
         age,
         gender,
         smoking,
         county,
     ))
-  },[zipData])
+
+
+  },[policy])
 
  const onHandleSubmit = async (e) => {
     setErrors([])
