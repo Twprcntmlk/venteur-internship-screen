@@ -7,7 +7,7 @@ const VentuerForm = ({setAge,age,setGender,gender,setZip,zip,setSmoking,smoking,
   const dispatch = useDispatch();
   const zipData = useSelector(state => state.external.zip);
 
-  const [errors, setErrors] = useState()
+  const [errors, setErrors] = useState("")
   const [policy, setPolicy] = useState(zipData)
 
   const onHandleSubmit = async (e) => {
@@ -30,11 +30,15 @@ const VentuerForm = ({setAge,age,setGender,gender,setZip,zip,setSmoking,smoking,
     if(county){
       const filteredzipData = zipData.filter((el)=>(el.county === county))
       setPolicy(filteredzipData)
-      }else{
+      }
+    else if (county  & county.length > 1){
+        setPolicy(zipData)
         const counties = zipData.map((el, idx)=>(el.county))
-      setErrors(`Please Enter One of the Counties ${counties}`)
+        setErrors(`Please Enter One of the Counties ${counties}`)
+    }else{
+      setPolicy(zipData)
     }
-  },[zipData])
+  },[onHandleSubmit])
 
     return (
         <div className="ventuer-form-main">
