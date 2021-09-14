@@ -31,7 +31,8 @@ const VentuerForm = ({setAge,age,setGender,gender,setZip,zip,setSmoking,smoking,
       const filteredzipData = zipData.filter((el)=>(el.county === county))
       setPolicy(filteredzipData)
       }else{
-      setPolicy(zipData)
+        const counties = zipData.map((el, idx)=>(el.county))
+      setErrors(`Please Enter One of the Counties ${counties}`)
     }
   },[zipData])
 
