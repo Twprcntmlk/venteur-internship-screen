@@ -21,6 +21,7 @@ router.post('/quote', async (req, res) => {
   try{
     const data = {zipCountyId,age,gender,smoking}
     const result = await axios.post(`http://tech-screen.venteur.co/Policies/Quote`, data)
+
     //"nonsmoker""smoker"
     //"male""female"
     //"years10""years20""years30""wholelife"

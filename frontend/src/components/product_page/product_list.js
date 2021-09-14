@@ -5,7 +5,7 @@ import {fetchQuote} from '../../store/actions/external_actions'
 
 import './productList.css';
 
-const ProductList = ({age,gender,smoking}) => {
+const ProductList = ({age,gender,smoking,county}) => {
   const dispatch = useDispatch();
   const zipData = useSelector(state => state.external.zip);
   const quoteData = useSelector(state => state.external.quote);
@@ -24,6 +24,7 @@ const ProductList = ({age,gender,smoking}) => {
         age,
         gender,
         smoking,
+        county,
     ))
   },[zipData])
 

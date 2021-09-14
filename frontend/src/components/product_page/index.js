@@ -7,12 +7,13 @@ const ProductPage = () => {
   const [age, setAge] = useState("")
   const [gender, setGender] = useState()
   const [zip, setZip] = useState("")
+  const [county, setCounty] = useState("")
   const [smoking, setSmoking] = useState()
 
     return (
         <div>
-          <VentuerForm setAge={setAge} age={age} setGender={setGender} gender={gender} setZip={setZip} zip={zip} setSmoking={setSmoking} smoking={smoking}/>
-          <ProductList age={age} gender={gender} smoking={smoking} />
+          <VentuerForm setAge={setAge} age={age} setGender={setGender} gender={gender} setZip={setZip} zip={zip} setSmoking={setSmoking} smoking={smoking} county={county} setCounty={setCounty}/>
+          <ProductList age={age} gender={gender} smoking={smoking} county={county}/>
         </div>
     )
 }

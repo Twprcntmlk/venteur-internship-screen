@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {fetchZip} from '../../store/actions/external_actions'
 import './ventuerForm.css';
 
-const VentuerForm = ({setAge,age,setGender,gender,setZip,zip,setSmoking,smoking}) => {
+const VentuerForm = ({setAge,age,setGender,gender,setZip,zip,setSmoking,smoking,county, setCounty}) => {
   const dispatch = useDispatch();
   const zipData = useSelector(state => state.external.zip);
 
@@ -27,7 +27,12 @@ const VentuerForm = ({setAge,age,setGender,gender,setZip,zip,setSmoking,smoking}
   }
 
   useEffect(()=>{
-    setPolicy(zipData)
+    if(county){
+      const filteredzipData = zipData.filter((el)=>(el.county === county))
+      setPolicy(filteredzipData)
+      }else{
+      setPolicy(zipData)
+    }
   },[zipData])
 
     return (
@@ -57,6 +62,12 @@ const VentuerForm = ({setAge,age,setGender,gender,setZip,zip,setSmoking,smoking}
                     placeholder="Zipcode"
                   />
                 <br/>
+                  <input type="text"
+                    value={county}
+                    onChange={(e) => {setCounty(e.target.value)}}
+                    placeholder="County"
+                  />
+                <br/>
                   <select defaultValue={"Smoker?"} value={smoking} onChange={(e) => {setSmoking(e.target.value)}} >
                     <option value="Smoker?" disabled>Smoker?</option>
                     <option value="nonsmoker">Non-Smoker</option>
@@ -70,7 +81,7 @@ const VentuerForm = ({setAge,age,setGender,gender,setZip,zip,setSmoking,smoking}
           </div>
           <div className="ventuer-form-container-result">
           {policy && policy.map((el, idx)=>(
-            <div key={idx}>
+            <div className="ventuer-form-container-result-policy" key={idx}>
               <div>Id: {el.id}</div>
               <div>Zip Code: {el.zip}</div>
               <div>City: {el.city}</div>

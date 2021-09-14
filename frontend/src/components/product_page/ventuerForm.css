@@ -17,8 +17,14 @@
 .ventuer-form-container-result{
     grid-area: output;
     margin: 2%;
+    display:flex;
+    flex-direction: row;
 }
 
 .errors{
     color:red
+}
+
+.ventuer-form-container-result-policy{
+    margin: 2%;
 }
